@@ -17,4 +17,4 @@ RUN tar zxvf boost_1_71_0.tar.gz
 RUN source /opt/rh/devtoolset-7/enable \
     && cd boost_1_71_0 \
     && ./bootstrap.sh --prefix=/usr/local \
-    && ./b2 install
+    && ./b2 -j $(nproc) cxxflags=-fPIC install ; exit 0

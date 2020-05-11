@@ -18,3 +18,6 @@ RUN source /opt/rh/devtoolset-7/enable \
     && cd boost_1_71_0 \
     && ./bootstrap.sh --prefix=/usr/local \
     && ./b2 -j $(nproc) cxxflags=-fPIC install ; exit 0
+RUN groupadd -g 1003 bamboo
+RUN useradd --gid bamboo --create-home --uid 1003 bamboo
+USER bamboo
